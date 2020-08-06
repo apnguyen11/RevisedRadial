@@ -46,15 +46,8 @@ export class AppComponent {
   constructor() {}
 
   ngOnInit() {
-    console.log(realData.default)
+    console.log(JSON.parse(JSON.stringify(realData)).default)
     this.getCementService()
-    // const containerDiv = this.container.nativeElement;
-    // containerDiv.appendChild(this.createChart());
-
-
-    // this.sub = Observable.interval(1)
-
-    // .subscribe((val) => {
       setInterval(()=>{
         this.HPData.push(this.p5000Data[this.index])
 
@@ -74,17 +67,11 @@ export class AppComponent {
         }
       containerDiv.appendChild(this.createChart());
       },1)
-
-
-
-      // });
-
-
   }
 
   getCementService() {
 
-      this.pressureData = realData.default;
+      this.pressureData = JSON.parse(JSON.stringify(realData)).default
       this.p500Data = [];
       this.p5000Data = [];
       this.pressureData.map(d => this.pressureDates.push(new Date(d.TimeStamp.toString())));
